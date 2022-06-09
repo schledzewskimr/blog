@@ -86,6 +86,9 @@ ul#messages li.error {
     background-color: #3A1027;
     border-color: #3A1027;
     animation: ease-in 1s;
+    width: 200px;
+    height: 60px;
+    font-size: large;
 }
 .btn:hover{
     background-color: #D91A5F;
@@ -104,4 +107,9 @@ input{
 .row{
     display: flex;
     justify-content: flex-start;
+}
+
+.form-control{
+    margin: 10px;
+    max-width: 504px;
 }
