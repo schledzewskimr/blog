@@ -11,10 +11,10 @@
 
 <body>
 
-<header th:fragment=“site-header” th:remove = "tag">
+<header th:fragment=“site-header” th:remove = "tag" id="header">
   <header>
     <a href=“index.html” th:href=“@{/}”>
-      <img src="../public/img/lightLogo.png" th:src="@{/img/lightLogo.png}" class = "siteLogo" />
+      <img src="../public/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
     </a>
     <a href="index.html" th:href="@{/}">Home</a>
     <a href="users/login.html" th:href="@{/users/login}">Login</a>
@@ -28,6 +28,11 @@
         <input type="submit" value="Logout"/>
       </form>
     </div>
+
+    <div id="toggle">
+      <i class="indicator"></i>
+    </div>
+
   </header>
 
   <ul id="messages" th:with="notifyMessages=${session[T(blog.services
@@ -42,10 +47,9 @@
 
 <h1 class="pageHeader">Login</h1>
 
-<hr>
 
 <div class = "container" style="display: flex; justify-content: center">
-  <div class = "row" style="padding:2rem; border: solid black 4px; border-radius: 2rem; max-width: 700px">
+  <div class = "row" id="formBox">
     <div class = "col-md-6 col-md-offset-3">
 
       <form method="post" th:object="${loginForm}" class="row g-3" id="loginForm">
@@ -86,7 +90,7 @@
 
         <!--register link-->
         <div class="form-group">
-          <span><h5>New user? <a href="register.html" th:href="@{/users/register}">Register here</a></h5></span>
+          <span><h5>New user? <a href="registration.html" th:href="@{/users/register}">Register here</a></h5></span>
         </div>
       </form>
     </div>
@@ -94,17 +98,36 @@
 </div>
 
 <br>
-<hr>
+<br>
 
-<ul class="footer footer--links-social wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
-  <li><a href="https://www.facebook.com/carolinafintechhub/"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/icon-facebook-2.svg" alt="Facebook Link" style="padding-right: 30px "></a></li>
-  <li><a href="https://twitter.com/carolinafintech?lang=en"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/icon-twitter-FontAwesome.svg" alt="Twitter Link" style="padding-right: 30px"></a></li>
-  <li><a href="https://www.instagram.com/carolinafintechhub/"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/Page-1.svg" alt="Instagram Link" style="padding-right: 30px"></a></li>
-  <li><a href="https://www.linkedin.com/company/carolina-fintech-hub/"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/linkedin.svg" alt="LinkedIn Link" style="padding-right: 30px"></a></li>
+
+<ul class="footer footer--links-social wow fadeIn" id="footer" style="visibility: visible; animation-name: fadeIn;">
+  <li><a href="https://www.facebook.com/carolinafintechhub/"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/icon-facebook-2.svg" alt="Facebook Link" style="padding-right: 30px " class="footerIcon"></a></li>
+  <li><a href="https://twitter.com/carolinafintech?lang=en"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/icon-twitter-FontAwesome.svg" alt="Twitter Link" style="padding-right: 30px" class="footerIcon"></a></li>
+  <li><a href="https://www.instagram.com/carolinafintechhub/"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/Page-1.svg" alt="Instagram Link" style="padding-right: 30px" class="footerIcon"></a></li>
+  <li><a href="https://www.linkedin.com/company/carolina-fintech-hub/"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/linkedin.svg" alt="LinkedIn Link" style="padding-right: 30px" class="footerIcon"></a></li>
 </ul>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script>
+  const body = document.querySelector('body');
+  const formBox = document.getElementById('formBox');
+  const toggle = document.getElementById('toggle');
+  const header = document.getElementById('header');
+  const footer = document.getElementById('footer');
+  const siteLogo = document.getElementById('siteLogo');
+  const footerIcon = document.getElementsByClassName('footerIcon');
+  toggle.onclick=function(){
+    toggle.classList.toggle('active');
+    body.classList.toggle('active');
+    formBox.classList.toggle('active');
+    header.classList.toggle('active');
+    footer.classList.toggle('active');
+    siteLogo.classList.toggle('active');
+    footerIcon.classList.toggle('active');
+  }
 
+</script>
 </body>
 
 </html>
