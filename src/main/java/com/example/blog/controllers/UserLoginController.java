@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.blog.services.NotiGangServ;
 import com.example.blog.services.UserLogin;
 import com.example.blog.services.UserService1;
 
@@ -18,20 +19,32 @@ public class UserLoginController {
     @Autowired
     private UserService1 userService;
 
+    @Autowired
+    private NotiGangServ notifyServ;
+
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
     @GetMapping("/registration")
-    public String register(){
+    public String register() {
         return "registration";
     }
 
-    // @RequestMapping(value = "/user/login", method = RequestMethod.POST)
-    // public String loginPage(@Valid UserLogin userLogin, BindingResult bindingResult) {
-    //     if (bindingResult.hasErrors()) {
-            
-    //     }
-    // }
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    public String loginPage(@Valid UserLogin userLogin, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            notifyServ.addErrorMessage("Error!  Error!  Please fill out form correctly!");
+            return "user/login";
+        }
+        if (!userService.authenticate(
+            userLogin.getUsername(), userLogin.getPassword())) {
+                notifyServ.addErrorMessage("Invalid login!");
+                return "user/login";
+            }
+
+        notifyServ.addInfoMessage("Successful login!");
+        return "redirect:/";
+    }
 }
