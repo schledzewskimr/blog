@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.blog.services.NotiGangServ;
 import com.example.blog.services.UserLogin;
-import com.example.blog.services.UserService1;
+import com.example.blog.services.UserService;
 
 @Controller
 public class UserLoginController {
 
     @Autowired
-    private UserService1 userService;
+
+    private UserService userService;
 
     @Autowired
     private NotiGangServ notifyServ;
@@ -47,4 +48,5 @@ public class UserLoginController {
         notifyServ.addInfoMessage("Successful login!");
         return "redirect:/";
     }
+
 }
