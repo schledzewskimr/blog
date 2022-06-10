@@ -10,39 +10,44 @@
 </head>
 
 <body>
+<div class="thisGoesAbove">
+    <header id="header">
+        <header>
+            <a href=“index.html”>
+                <img src="../../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
+            </a>
+            <a href="../index.html" th:href="@{/templates/index.html}">Home</a>
+            <a href="login.html" >Login</a>
+            <a href="registration.html" >Register</a>
+            <a href="../index.html" >Posts</a>
+            <a href="create.html" >Create Post</a>
+            <a href="../index.html" >Users</a>
+            <div id="logged-in-info">
+                <span>Hello, <b>(user)</b></span>
+                <form method="post" th:action="@{/users/logout}">
+                    <input type="submit" value="Logout"/>
+                </form>
+            </div>
+        </header>
 
-<header id="header">
-    <header>
-        <a href=“index.html”>
-            <img src="../../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
-        </a>
-        <a href="../index.html" th:href="@{/templates/index.html}">Home</a>
-        <a href="login.html" >Login</a>
-        <a href="registration.html" >Register</a>
-        <a href="../index.html" >Posts</a>
-        <a href="create.html" >Create Post</a>
-        <a href="../index.html" >Users</a>
-        <div id="logged-in-info">
-            <span>Hello, <b>(user)</b></span>
-            <form method="post" th:action="@{/users/logout}">
-                <input type="submit" value="Logout"/>
-            </form>
+        <div id="toggle">
+            <i class="indicator"></i>
         </div>
+
+    <!--    <ul id="messages" th:with="notifyMessages=${session[T(blog.services-->
+    <!--          .NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY]}">-->
+    <!--        <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"-->
+    <!--            th:class="${#strings.toLowerCase(msg.type)}">-->
+    <!--        </li>-->
+    <!--        <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(-->
+    <!--          T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>-->
+    <!--    </ul>-->
     </header>
+</div>
 
-    <div id="toggle">
-        <i class="indicator"></i>
-    </div>
+<div class="thisGoesBelow">
+<div class="page-header--shape-right fadeInUp" data-wow-delay=".15s" style="visibility: visible; animation-delay: 1s; animation-name: fadeInUp;"></div>
 
-<!--    <ul id="messages" th:with="notifyMessages=${session[T(blog.services-->
-<!--          .NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY]}">-->
-<!--        <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"-->
-<!--            th:class="${#strings.toLowerCase(msg.type)}">-->
-<!--        </li>-->
-<!--        <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(-->
-<!--          T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>-->
-<!--    </ul>-->
-</header>
 
 <h1 class="pageHeader">Registration</h1>
 
@@ -99,6 +104,9 @@
     </div>
 </div>
 
+<div class="home--join-shape wow fadeInUp" data-wow-delay=".15s" style="visibility: visible; animgitation-delay: 1s; animation-name: fadeInUp;"></div>
+
+
 <br>
 
 
@@ -108,6 +116,8 @@
     <li><a href="https://www.instagram.com/carolinafintechhub/" ><img class="footerIcon" src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/Page-1.svg" alt="Instagram Link" style="padding-right: 30px"></a></li>
     <li><a href="https://www.linkedin.com/company/carolina-fintech-hub/" ><img class="footerIcon" src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/linkedin.svg" alt="LinkedIn Link" style="padding-right: 30px"></a></li>
 </ul>
+
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script>
