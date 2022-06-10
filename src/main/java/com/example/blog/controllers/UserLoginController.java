@@ -14,39 +14,27 @@ import com.example.blog.services.UserLogin;
 import com.example.blog.services.UserService;
 
 @Controller
-public class UserLoginController1 {
+public class UserLoginController {
 
     @Autowired
-<<<<<<< HEAD
+
     private UserService userService;
-    
-    @GetMapping("users/login")
-=======
-    private UserService1 userService;
 
     @Autowired
     private NotiGangServ notifyServ;
 
-    @GetMapping("/login")
->>>>>>> 45a34b7af04ac099501ac3d9afa2bb985f4768dc
+    @GetMapping("users/login")
+
     public String login() {
 
         return "/login";
     }
 
-<<<<<<< HEAD
-
-=======
-    @GetMapping("/registration")
-    public String register() {
-        return "registration";
-    }
-
-    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
     public String loginPage(@Valid UserLogin userLogin, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             notifyServ.addErrorMessage("Error!  Error!  Please fill out form correctly!");
-            return "user/login";
+            return "users/login";
         }
         if (!userService.authenticate(
             userLogin.getUsername(), userLogin.getPassword())) {
@@ -57,5 +45,5 @@ public class UserLoginController1 {
         notifyServ.addInfoMessage("Successful login!");
         return "redirect:/";
     }
->>>>>>> 45a34b7af04ac099501ac3d9afa2bb985f4768dc
+
 }
