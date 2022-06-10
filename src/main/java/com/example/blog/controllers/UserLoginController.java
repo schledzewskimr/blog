@@ -10,23 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.blog.services.UserLogin;
-import com.example.blog.services.UserService1;
+import com.example.blog.services.UserService;
 
 @Controller
 public class UserLoginController {
 
     @Autowired
-    private UserService1 userService;
-
+    private UserService userService;
+    
     @GetMapping("/login")
     public String login() {
+
         return "login";
     }
 
-    // @RequestMapping(value = "/user/login", method = RequestMethod.POST)
-    // public String loginPage(@Valid UserLogin userLogin, BindingResult bindingResult) {
-    //     if (bindingResult.hasErrors()) {
-            
-    //     }
-    // }
+
 }
