@@ -1,4 +1,4 @@
-package com.example.blog.service;
+package com.example.blog.services;
 
 import javax.validation.constraints.Size;
 
