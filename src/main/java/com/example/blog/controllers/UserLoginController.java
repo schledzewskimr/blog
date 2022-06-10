@@ -23,6 +23,11 @@ public class UserLoginController {
         return "login";
     }
 
+    @GetMapping("/registration")
+    public String register(){
+        return "registration";
+    }
+
     // @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     // public String loginPage(@Valid UserLogin userLogin, BindingResult bindingResult) {
     //     if (bindingResult.hasErrors()) {

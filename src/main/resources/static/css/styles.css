@@ -1,26 +1,31 @@
-#siteLogo{
+#siteLogo {
     max-height: 10rem;
 }
-#siteLogo.active{
+
+#siteLogo.active {
     max-height: 0;
     background-image: url("../img/darkLogo.png");
     padding: 5rem;
     padding-right: 19rem;
     background-size: 390px;
-    background-repeat: no-repeat ;
+    background-repeat: no-repeat;
 }
-a{
+
+a {
     color: #D91A5F;
 }
-a:hover{
+
+a:hover {
     color: #3A1027;
 }
-body{
+
+body {
     padding-top: 300px;
     transition: .7s;
     background: #eeeeee;
 }
-#toggle{
+
+#toggle {
     position: relative;
     display: block;
     width: 100px;
@@ -29,15 +34,17 @@ body{
     background: aliceblue;
     transition: .1s;
     cursor: pointer;
-    box-shadow: inset 0 8px 60px rgba(0,0,0,0.1),
-                inset 0 8px 8px rgba(0,0,0,0.1),
-                inset 0 -4px 4px rgba(0,0,0,0.1);
+    box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1),
+    inset 0 8px 8px rgba(0, 0, 0, 0.1),
+    inset 0 -4px 4px rgba(0, 0, 0, 0.1);
 }
-#toggle.active{
+
+#toggle.active {
     background: #363535;
     transition: 1s;
 }
-#toggle .indicator{
+
+#toggle .indicator {
     position: absolute;
     top: 0;
     left: 0;
@@ -46,21 +53,24 @@ body{
     background: linear-gradient(to bottom, #fff, #565656);
     border-radius: 50%;
     transform: scale(0.9);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5),
-                inset 0 4px 4px rgba(255, 255, 255, 0.2),
-                inset 0 -4px -4px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
+    inset 0 4px 4px rgba(255, 255, 255, 0.2),
+    inset 0 -4px -4px rgba(255, 255, 255, 0.2);
     transition: .5s;
 }
-#toggle.active .indicator{
+
+#toggle.active .indicator {
     left: 50px;
     background: linear-gradient(to bottom, #565656, #222222);
 }
-body.active{
+
+body.active {
     background: #222222;
     color: aliceblue;
 }
-#formBox{
-    padding:2rem;
+
+#formBox {
+    padding: 2rem;
     border: solid black 4px;
     border-radius: 2rem;
     max-width: 700px;
@@ -68,27 +78,32 @@ body.active{
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#formBox.active{
+
+#formBox.active {
     background: #363535;
-    border: solid 4px rgb(244,122,55);
+    border: solid 4px rgb(244, 122, 55);
     transition: .7s;
 }
-#footer{
-    transition: .7s;
+
+#footer {
     padding: 20px;
 }
-#footer.active{
+
+#footer.active {
     background: #222222;
     color: #CCCCCC;
-    transition: .7s;
+    transition: 100s;
 }
-.footerIcon.active{
+
+.footerIcon.active {
     filter: brightness(0) saturate(100%) invert(17%) sepia(76%) saturate(4076%) hue-rotate(326deg) brightness(92%) contrast(92%);
 }
-.footerIcon{
+
+.footerIcon {
     height: 40px;
 }
-#header{
+
+#header {
     position: fixed;
     top: 0;
     width: 100%;
@@ -97,27 +112,28 @@ body.active{
     border-bottom: solid 4px black;
     box-shadow: 0 4px 8px rgba(57, 63, 72, 0.3);
 }
-#header.active{
+
+#header.active {
     background: #363535;
     color: #CCCCCC;
     transition: .7s;
-    border-bottom: solid 4px rgb(244,122,55);
+    border-bottom: solid 4px rgb(244, 122, 55);
 }
 
 
-body>header {
+body > header {
     background: #eee;
     padding: 5px;
 }
 
-body>header>a>img, body>header a {
+body > header > a > img, body > header a {
     display: inline-block;
     vertical-align: middle;
     padding: 0px 5px;
     font-size: 1.2em;
 }
 
-body>footer {
+body > footer {
     background: #eee;
     padding: 5px;
     margin: 10px 0;
@@ -134,7 +150,7 @@ body>footer {
     margin-right: 10px;
 }
 
-body>aside {
+body > aside {
     float: right;
     width: 200px;
     background: #CCC;
@@ -143,17 +159,17 @@ body>aside {
     margin-top: 10px;
 }
 
-body>aside h2 {
+body > aside h2 {
     margin: 5px 0px 15px 0px;
 }
 
-body>aside a {
+body > aside a {
     display: block;
     margin: 5px 0px;
     text-decoration: none;
 }
 
-body>main:after {
+body > main:after {
     content: '';
     display: block;
     clear: both;
@@ -183,9 +199,10 @@ ul#messages li.error {
 }
 
 #loginForm {
-    width:600px;
+    width: 600px;
 }
-.btn{
+
+.btn {
     background-color: #3A1027;
     border-color: #3A1027;
     animation: ease-in 1s;
@@ -193,27 +210,30 @@ ul#messages li.error {
     height: 60px;
     font-size: large;
 }
-.btn:hover{
+
+.btn:hover {
     background-color: #D91A5F;
     border-color: #D91A5F;
     animation: ease-in 1s;
 }
-input{
+
+input {
     margin: 0;
     height: 50px;
 }
-.pageHeader{
+
+.pageHeader {
     padding: 10px;
     padding-left: 40px;
 }
 
-.row{
+.row {
     display: flex;
     justify-content: flex-start;
 }
 
 
-.footer{
+.footer {
     display: flex;
     justify-content: center;
     list-style: none;
@@ -224,7 +244,8 @@ input{
     z-index: 1;
     transition: .7s;
 }
-.form-control{
+
+.form-control {
     margin: 10px;
     max-width: 450px;
     margin-left: 20px;
@@ -235,12 +256,14 @@ input{
     border-right: none;
     transition: .7s;
 }
-.form-control:focus{
+
+.form-control:focus {
     outline: none;
     box-shadow: none;
     border-color: black;
 }
-.form-control.active{
+
+.form-control.active {
     color: #CCCCCC;
     border-color: white;
     background: #363535;

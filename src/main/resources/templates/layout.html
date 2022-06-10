@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta th:include=“this :: head” th:remove=“tag”/>
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <script src="../public/js/jquery-3.6.0.js"></script>
-    <script src="../public/js/blog-scripts.js"></script>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script src="../static/js/jquery-3.6.0.js"></script>
+    <script src="../static/js/blog-scripts.js"></script>
 </head>
 <body>
 <header th:fragment=“site-header” th:remove = "tag">
     <header>
         <a href=“index.html” th:href=“@{/}”>
-            <img src="../public/img/lightLogo.png" th:src="@{/img/lightLogo.png}" class = "siteLogo" />
+            <img src="../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" class = "siteLogo" />
         </a>
         <a href="index.html" th:href="@{/}">Home</a>
         <a href="users/login.html" th:href="@{/users/login}">Login</a>
