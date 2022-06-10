@@ -281,3 +281,16 @@ input {
         left: 0;
         z-index: 2;
     }
+
+.page-header--shape-right {
+    background: url("../img/shape-header-right@2x.png") left top no-repeat;
+    background-size: 260px;
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    height: 600px;
+    top: 220px;
+    right: 0;
+    width: 260px;
+    z-index: 3;
+}

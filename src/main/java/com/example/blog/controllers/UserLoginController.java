@@ -22,26 +22,26 @@ public class UserLoginController {
     @Autowired
     private NotiGangServ notifyServ;
 
-    @GetMapping("/login")
+    @GetMapping("users/login")
     public String login() {
-        return "login";
+        return "users/login";
     }
 
-    @GetMapping("/registration")
+    @GetMapping("users/registration")
     public String register() {
-        return "registration";
+        return "users/registration";
     }
 
-    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    @RequestMapping(value = "users/login", method = RequestMethod.POST)
     public String loginPage(@Valid UserLogin userLogin, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             notifyServ.addErrorMessage("Error!  Error!  Please fill out form correctly!");
-            return "user/login";
+            return "users/login";
         }
         if (!userService.authenticate(
             userLogin.getUsername(), userLogin.getPassword())) {
                 notifyServ.addErrorMessage("Invalid login!");
-                return "user/login";
+                return "users/login";
             }
 
         notifyServ.addInfoMessage("Successful login!");
