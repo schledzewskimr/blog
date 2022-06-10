@@ -14,7 +14,7 @@ import com.example.blog.services.UserLogin;
 import com.example.blog.services.UserService;
 
 @Controller
-public class UserLoginController {
+public class MainController {
 
     @Autowired
 
@@ -27,10 +27,14 @@ public class UserLoginController {
     public String login() {
         return "users/login";
     }
-
     @GetMapping("users/registration")
-    public String register() {
+    public String register(){
         return "users/registration";
+    }
+
+    @GetMapping("/")
+    public String index() {
+        return "index";
     }
 
     @RequestMapping(value = "users/login", method = RequestMethod.POST)
