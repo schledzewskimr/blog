@@ -24,13 +24,16 @@ public class UserLoginController {
     private NotiGangServ notifyServ;
 
     @GetMapping("users/login")
-
     public String login() {
-
         return "users/login";
     }
 
-    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
+    @GetMapping("users/registration")
+    public String register() {
+        return "users/registration";
+    }
+
+    @RequestMapping(value = "users/login", method = RequestMethod.POST)
     public String loginPage(@Valid UserLogin userLogin, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             notifyServ.addErrorMessage("Error!  Error!  Please fill out form correctly!");

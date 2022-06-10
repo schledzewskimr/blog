@@ -274,10 +274,28 @@ input {
         background-size: 260px;
         display: block;
         pointer-events: none;
-        position: absolute;
+        position: fixed;
         height: 459px;
         top: 50%;
         width: 260px;
         left: 0;
-        z-index: 2;
     }
+
+.page-header--shape-right {
+    background: url("../img/shape-header-right@2x.png") left top no-repeat;
+    background-size: 260px;
+    display: block;
+    pointer-events: none;
+    position: fixed;
+    height: 600px;
+    top: 220px;
+    right: 0;
+    width: 260px;
+}
+
+.thisGoesAbove{
+    z-index: -100;
+}
+.thisGoesBelow{
+    z-index: 100;
+}
