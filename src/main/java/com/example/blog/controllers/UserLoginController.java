@@ -18,20 +18,15 @@ public class UserLoginController {
     @Autowired
     private UserService1 userService;
 
-    @GetMapping("users/login")
+    @GetMapping("/login")
     public String login() {
-        return "users/login";
-    }
-
-    @GetMapping("users/registration")
-    public String register(){
-        return "users/registration";
+        return "login";
     }
 
     // @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     // public String loginPage(@Valid UserLogin userLogin, BindingResult bindingResult) {
     //     if (bindingResult.hasErrors()) {
-            
+
     //     }
     // }
 }
