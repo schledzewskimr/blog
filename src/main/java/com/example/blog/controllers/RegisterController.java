@@ -15,7 +15,7 @@ public class RegisterController {
 
     @GetMapping("users/registration")
     public String register(){
-        return "registration";
+        return "users/registration";
     }
 }
 

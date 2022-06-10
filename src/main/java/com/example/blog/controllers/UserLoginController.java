@@ -27,7 +27,7 @@ public class UserLoginController {
 
     public String login() {
 
-        return "/login";
+        return "users/login";
     }
 
     @RequestMapping(value = "/users/login", method = RequestMethod.POST)
@@ -39,7 +39,7 @@ public class UserLoginController {
         if (!userService.authenticate(
             userLogin.getUsername(), userLogin.getPassword())) {
                 notifyServ.addErrorMessage("Invalid login!");
-                return "user/login";
+                return "users/login";
             }
 
         notifyServ.addInfoMessage("Successful login!");
