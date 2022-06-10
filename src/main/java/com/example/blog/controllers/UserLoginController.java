@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.blog.services.UserLogin;
-import com.example.blog.services.UserService;
+import com.example.blog.services.UserService1;
 
 @Controller
 public class UserLoginController {
 
     @Autowired
-    private UserService userService;
+    private UserService1 userService;
     
     @RequestMapping("/user/login")
     public String login(UserLogin userLogin) {

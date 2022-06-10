@@ -1,5 +1,5 @@
 package com.example.blog.services;
 
-public interface UserService {
+public interface UserService1 {
     boolean authenticate(String username, String password);
 }

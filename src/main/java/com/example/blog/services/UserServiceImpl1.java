@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl1 implements UserService1 {
 
     @Override
     public boolean authenticate(String username, String password) {
