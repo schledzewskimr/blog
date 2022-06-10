@@ -18,14 +18,14 @@ public class UserLoginController {
     @Autowired
     private UserService1 userService;
 
-    @GetMapping("/login")
+    @GetMapping("users/login")
     public String login() {
-        return "login";
+        return "users/login";
     }
 
-    @GetMapping("/registration")
+    @GetMapping("users/registration")
     public String register(){
-        return "registration";
+        return "users/registration";
     }
 
     // @RequestMapping(value = "/user/login", method = RequestMethod.POST)
