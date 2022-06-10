@@ -82,8 +82,8 @@
         <!--submit button-->
         <div class="form-group">
           <div class="row" style="display: flex; justify-content: center">
-            <div class="col-sm-6 col-sm-offset-3">
-              <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Log In" />
+            <div class="col-sm-6 col-sm-offset-3" style="display: flex; justify-content: center">
+              <input type="submit" name="login-submit" id="login-submit" class="btn btn-primary" value="Log In" />
             </div>
           </div>
         </div>
@@ -117,6 +117,7 @@
   const footer = document.getElementById('footer');
   const siteLogo = document.getElementById('siteLogo');
   const footerIcon = document.getElementsByClassName('footerIcon');
+  const formControl = document.getElementsByClassName('form-control');
   toggle.onclick=function(){
     toggle.classList.toggle('active');
     body.classList.toggle('active');
@@ -124,7 +125,12 @@
     header.classList.toggle('active');
     footer.classList.toggle('active');
     siteLogo.classList.toggle('active');
-    footerIcon.classList.toggle('active');
+    for(let i=0;i<footerIcon.length;i++){
+      footerIcon[i].classList.toggle('active');
+    }
+    for(let i=0;i<formControl.length;i++){
+      formControl[i].classList.toggle('active');
+    }
   }
 
 </script>
