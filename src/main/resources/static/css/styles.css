@@ -268,3 +268,16 @@ input {
     border-color: white;
     background: #363535;
 }
+
+    .home--join-shape {
+        background: url("../img/shape-home-join@2x.png") left top no-repeat;
+        background-size: 260px;
+        display: block;
+        pointer-events: none;
+        position: absolute;
+        height: 459px;
+        top: 50%;
+        width: 260px;
+        left: 0;
+        z-index: 2;
+    }
