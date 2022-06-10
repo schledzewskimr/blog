@@ -13,39 +13,9 @@ import javax.validation.Valid;
 @Controller
 public class RegisterController {
 
-    private UserService userService;
-
-    public RegisterController(UserService userService) {
-        super();
-        this.userService = userService;
-    }
-
-    @ModelAttribute("user")
-    public WebMvcConfig userRegistrationDto() {
-        return new WebMvcConfig();
-    }
-
-    @GetMapping
-    public String showRegistrationForm() {
+    @GetMapping("users/registration")
+    public String register(){
         return "registration";
-    }
-
-    @PostMapping("/register")
-    public ModelAndView registerNewUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView();
-        User userObj = userService.findByUserName(user.getUserName());
-        if(userObj != null){
-            bindingResult.rejectValue("email", "error.user", "This email id is already registered.");
-        }
-        modelAndView.setViewName("register");
-        if(bindingResult.hasErrors()){
-            return modelAndView;
-        }else{
-            userService.create(user);
-            modelAndView.addObject("user",new User());
-            modelAndView.addObject("successMessage", "User registered successfully");
-        }
-        return modelAndView;
     }
 }
 

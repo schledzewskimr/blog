@@ -18,7 +18,7 @@ public class UserLoginController {
     @Autowired
     private UserService userService;
     
-    @GetMapping("/login")
+    @GetMapping("users/login")
     public String login() {
 
         return "login";

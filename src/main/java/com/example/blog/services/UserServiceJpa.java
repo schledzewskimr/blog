@@ -30,6 +30,7 @@ public class UserServiceJpa implements UserService {
     }
     @Override
     public List<User> findAll() {
+
         return this.userRepository.findAll();
     }
 
@@ -38,10 +39,7 @@ public class UserServiceJpa implements UserService {
         return null;
     }
 
-//    @Override
-//    public Page<User> findAll(Pageable pageable) {
-//        return this.userRepository.findAll(pageable);
-//    }
+
     @Override
     public User findById(Long id) {
         return this.userRepository.getOne(id);
