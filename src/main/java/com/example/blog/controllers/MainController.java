@@ -37,6 +37,11 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("posts/posts")
+    public String view(){
+        return "posts/posts";
+    }
+
     @RequestMapping(value = "users/login", method = RequestMethod.POST)
     public String loginPage(@Valid UserLogin userLogin, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

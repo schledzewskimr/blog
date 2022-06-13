@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layout :: site-head">
+<head>
   <title>CFH Blog</title>
   <link rel="stylesheet" href="../static/css/styles.css">
   <script src="../static/js/blog-scripts.js"></script>
@@ -10,7 +10,7 @@
 
 <body>
 
-<header></header>
+<header th:replace="fragments/header :: header"></header>
 
 <aside>
   <h2>Recent Posts</h2>

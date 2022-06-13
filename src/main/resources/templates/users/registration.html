@@ -10,40 +10,9 @@
 </head>
 
 <body>
-<div class="thisGoesAbove">
-    <header id="header">
-        <header>
-            <a href=“index.html”>
-                <img src="../../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
-            </a>
-            <a href="../index.html" th:href="@{/templates/index.html}">Home</a>
-            <a href="login.html" >Login</a>
-            <a href="registration.html" >Register</a>
-            <a href="../index.html" >Posts</a>
-            <a href="create.html" >Create Post</a>
-            <a href="../index.html" >Users</a>
-            <div id="logged-in-info">
-                <span>Hello, <b>(user)</b></span>
-                <form method="post" th:action="@{/users/logout}">
-                    <input type="submit" value="Logout"/>
-                </form>
-            </div>
-        </header>
 
-        <div id="toggle">
-            <i class="indicator"></i>
-        </div>
+<header th:replace="/fragments/header.html :: header" id="header"></header>
 
-    <!--    <ul id="messages" th:with="notifyMessages=${session[T(blog.services-->
-    <!--          .NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY]}">-->
-    <!--        <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"-->
-    <!--            th:class="${#strings.toLowerCase(msg.type)}">-->
-    <!--        </li>-->
-    <!--        <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(-->
-    <!--          T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>-->
-    <!--    </ul>-->
-    </header>
-</div>
 
 <div class="thisGoesBelow">
 <div class="page-header--shape-right fadeInUp" data-wow-delay=".15s" style="visibility: visible; animation-delay: 1s; animation-name: fadeInUp;"></div>
