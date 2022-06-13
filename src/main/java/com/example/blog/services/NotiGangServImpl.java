@@ -12,17 +12,22 @@ import org.springframework.stereotype.Service;
 public class NotiGangServImpl implements NotiGangServ {
 
     public static final String NOTIFY_MSG_SESSION_KEY = "siteNotificationMessages";
-
+    public enum NotificationMessageType {
+        INFO,
+        ERROR
+    }
     @Autowired
     private HttpSession httpSession;
 
     @Override
     public void addInfoMessage(String msg) {
+
         addNotificationMessage(NotificationMessageType.INFO, msg);
     }
 
     @Override
     public void addErrorMessage(String msg) {
+
         addNotificationMessage(NotificationMessageType.ERROR, msg);
     }
 
@@ -37,10 +42,7 @@ public class NotiGangServImpl implements NotiGangServ {
         httpSession.setAttribute(NOTIFY_MSG_SESSION_KEY, notifyMessages);
     }
 
-    public enum NotificationMessageType {
-        INFO,
-        ERROR
-    }
+
 
     public class NotificationMessage {
         NotificationMessageType type;
@@ -52,10 +54,12 @@ public class NotiGangServImpl implements NotiGangServ {
         }
 
         public NotificationMessageType getType() {
+
             return type;
         }
 
         public String getText() {
+
             return text;
         }
     }
