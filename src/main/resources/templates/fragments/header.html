@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <header id="header" th:fragment="header">
+        <a href="./header.html">
+            <img src="../../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
+        </a>
+            <a class="headerItems" href="../index.html" th:href="@{/templates/index.html}">Home</a><a class="headerItems" href="../users/login.html" th:href="@{/users/login}">Login</a>
+            <a class="headerItems" href="../users/registration.html" th:href="@{/users/registration}">Register</a>
+            <a class="headerItems" href="../posts/posts.html" th:href="@{/posts/posts}">Posts</a>
+            <a class="headerItems" href="create.html" >Create Post</a>
+            <a class="headerItems" href="../index.html" >Users</a>
+
+            <div style="display: flex; flex-direction: column; align-content: space-evenly">
+                <div id="logged-in-info">
+                    <span>Hello, <b>(user)</b></span>
+                    <form method="post" th:action="@{/users/logout}">
+                        <input type="submit" value="Logout"/>
+                    </form>
+                </div>
+
+                <div id="toggle">
+                    <i class="indicator"></i>
+                </div>
+            </div>
+        </ul>
+
+        <!--  <ul id="messages" >-->
+        <!--    <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"-->
+        <!--        th:class="${#strings.toLowerCase(msg.type)}">-->
+        <!--    </li>-->
+        <!--    <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(-->
+        <!--          T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>-->
+        <!--  </ul>-->
+    </header>
+
+</body>
+</html>
