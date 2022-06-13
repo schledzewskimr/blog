@@ -23,6 +23,7 @@ body {
     padding-top: 300px;
     transition: .7s;
     background: #eeeeee;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 #toggle {
@@ -311,4 +312,11 @@ input {
     text-decoration: none;
     font-size: x-large;
     font-weight: bold;
+    color: #D91A5F;
+}
+.headerItems:hover{
+    color: #3A1027;
+}
+.headerItems:visited{
+    color: #D91A5F;
 }

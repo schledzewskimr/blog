@@ -13,19 +13,29 @@
             <a class="headerItems" href="../posts/posts.html" th:href="@{/posts/posts}">Posts</a>
             <a class="headerItems" href="create.html" >Create Post</a>
             <a class="headerItems" href="../index.html" >Users</a>
-
-            <div style="display: flex; flex-direction: column; align-content: space-evenly">
-                <div id="logged-in-info">
-                    <span>Hello, <b>(user)</b></span>
-                    <form method="post" th:action="@{/users/logout}">
-                        <input type="submit" value="Logout"/>
-                    </form>
-                </div>
-
-                <div id="toggle">
-                    <i class="indicator"></i>
-                </div>
-            </div>
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle headerItems" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Username</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item" href="#">
+                        <div id="logged-in-info">
+                            <p>Hello, <b>(user)</b></p>
+                        </div>
+                    </li>
+                    <hr>
+                    <li class="dropdown-item" href="#">
+                        <div id="toggle">
+                            <i class="indicator"></i>
+                        </div>
+                    </li>
+                    <hr>
+                    <li class="dropdown-item" href="#">
+                        <form method="post" th:action="@{/users/logout}">
+                            <input type="submit" value="Logout"/>
+                        </form>
+                    </li>
+                </ul>
+            </li>
         </ul>
 
         <!--  <ul id="messages" >-->
