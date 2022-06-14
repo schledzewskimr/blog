@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+
+<!--SITE HEAD-->
+<head th:fragment=“site-head”>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta th:include=“this :: head” th:remove=“tag”/>
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <script src="../../static/js/jquery-3.6.0.js"></script>
+    <script src="../../static/js/blog-scripts.js"></script>
+</head>
+
+
+<body>
+
+<!--HEADER-->
+<header id="header" th:fragment="header">
+    <a href="./header.html">
+        <img src="../../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
+    </a>
+    <a class="headerItems" href="../index.html" th:href="@{/templates/index.html}">Home</a><a class="headerItems" href="../users/login.html" th:href="@{/users/login}">Login</a>
+    <a class="headerItems" href="../users/registration.html" th:href="@{/users/registration}">Register</a>
+    <a class="headerItems" href="../posts/posts.html" th:href="@{/posts/posts}">Posts</a>
+    <a class="headerItems" href="create.html" >Create Post</a>
+    <a class="headerItems" href="../index.html" th:href="@{/templates/index.html" >Users</a>
+    <ul class="nav nav-pills">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle headerItems" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
+            <ul class="dropdown-menu">
+
+                <li class="dropdown-item" href="#" id="logged-in-info" style="margin:0">
+                    <p style="margin:0">Hello, <b>(user)</b></p>
+                </li>
+                <li class="dropdown-item" href="#">
+                    <div id="toggle">
+                        <i class="indicator"></i>
+                    </div>
+                </li>
+                <li class="dropdown-item" href="#">
+                    <form method="post" th:action="@{/users/logout}">
+                        <input type="submit" value="Logout"/>
+                    </form>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul id="messages" >-->
+        <li th:each="msg : ${notifyMessages}" th:text="${msg.text}" th:class="${#strings.toLowerCase(msg.type)}">
+        </li>
+        <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>
+    </ul>
+</header>
+
+
+<h1>Carolina Fintech Hub Blog</h1>
+
+
+<!--FOOTER-->
+<ul class="footer footer--links-social wow" id="footer" style="visibility: visible; animation-name: fadeIn;" th:fragment="site-footer">
+    <li><a href="https://www.facebook.com/carolinafintechhub/"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/icon-facebook-2.svg" alt="Facebook Link" style="padding-right: 30px " class="footerIcon"></a></li>
+    <li><a href="https://twitter.com/carolinafintech?lang=en"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/icon-twitter-FontAwesome.svg" alt="Twitter Link" style="padding-right: 30px" class="footerIcon"></a></li>
+    <li><a href="https://www.instagram.com/carolinafintechhub/"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/Page-1.svg" alt="Instagram Link" style="padding-right: 30px" class="footerIcon"></a></li>
+    <li><a href="https://www.linkedin.com/company/carolina-fintech-hub/"><img src="https://3chxux42u1m943cnnj18o850-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/linkedin.svg" alt="LinkedIn Link" style="padding-right: 30px" class="footerIcon"></a></li>
+</ul>
+
+<!-- DARK MODE -->
+<script>
+    const body = document.querySelector('body');
+    const formBox = document.getElementById('formBox');
+    const toggle = document.getElementById('toggle');
+    const header = document.getElementById('header');
+    const footer = document.getElementById('footer');
+    const siteLogo = document.getElementById('siteLogo');
+    const footerIcon = document.getElementsByClassName('footerIcon');
+    const formControl = document.getElementsByClassName('form-control');
+    toggle.onclick=function(){
+        toggle.classList.toggle('active');
+        body.classList.toggle('active');
+        formBox.classList.toggle('active');
+        header.classList.toggle('active');
+        footer.classList.toggle('active');
+        siteLogo.classList.toggle('active');
+        for(let i=0;i<footerIcon.length;i++){
+            footerIcon[i].classList.toggle('active');
+        }
+        for(let i=0;i<formControl.length;i++){
+            formControl[i].classList.toggle('active');
+        }
+    }
+</script>
+</body>
+</html>
