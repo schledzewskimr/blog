@@ -2,6 +2,7 @@ package com.example.blog.controllers;
 
 import javax.validation.Valid;
 
+import com.example.blog.dto.UserRegistrationDto;
 import com.example.blog.models.Post;
 import com.example.blog.models.User;
 import com.example.blog.services.PostService;
@@ -11,9 +12,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.blog.services.NotiGangServ;
 import com.example.blog.Forms.UserLogin;
@@ -121,4 +120,31 @@ public class MainController {
         return "users/index";
     }
 
+    @RequestMapping("/registration")
+    public class UserRegistrationController {
+
+        private UserService userService;
+
+        public UserRegistrationController(UserService userService) {
+            super();
+            this.userService = userService;
+        }
+
+        @ModelAttribute("user")
+        public UserRegistrationDto userRegistrationDto() {
+            return new UserRegistrationDto();
+        }
+
+        @GetMapping
+        public String showRegistrationForm() {
+            return "registration";
+        }
+
+        @PostMapping
+        public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {
+            userService.save(registrationDto);
+            return "redirect:/registration?success";
+        }
+
+}
 }

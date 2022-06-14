@@ -1,16 +1,11 @@
 package com.example.blog.models;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 // Needed for JPA (Java Persistence API)
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
@@ -22,8 +17,10 @@ import org.hibernate.validator.constraints.Length;
  * 	for persistence in the database through the JPA / Hibernate technology
  *
  */
+
+
 @Entity
-@Table(name="users")
+@Table(name="users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
     @Id
@@ -42,6 +39,14 @@ public class User {
     @Column(length = 100)
     @NotEmpty(message = "Please provide your full name")
     private String fullName;
+
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "email")
+    private String email;
 
     @OneToMany(mappedBy = "author")
     private Set<Post> posts = new HashSet<>();
@@ -125,8 +130,64 @@ public class User {
      */
     @Override
     public String toString() {
-        return "User [id=" + id + ", userName=" + userName + ", passwordHash=" + password + ", fullName=" + fullName + "]";
+        return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", fullName=" + fullName + "roles=" + roles +"]";
+    }
+        @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        @JoinTable(
+                name = "users_roles",
+                joinColumns = @JoinColumn(
+                        name = "user_id", referencedColumnName = "id"),
+                inverseJoinColumns = @JoinColumn(
+                        name = "role_id",referencedColumnName = "id"))
+        private Collection<Role> roles;
+
+        public User(String firstName, String lastName, String email, String password) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.password = password;
+        }
+
+        public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+            super();
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.password = password;
+            this.roles = roles;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public Collection<Role> getRoles() {
+            return roles;
+        }
+
+        public void setRoles(Collection<Role> roles) {
+            this.roles = roles;
+        }
+
     }
 
-
-}
