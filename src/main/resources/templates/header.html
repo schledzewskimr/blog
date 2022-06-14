@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <header id="header" th:fragment="header" style="z-index: 2">
+        <a href="./header.html">
+            <img src="../../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
+        </a>
+            <a class="headerItems" href="../index.html" th:href="@{/templates/index.html}">Home</a><a class="headerItems" href="../users/login.html" th:href="@{/users/login}">Login</a>
+            <a class="headerItems" href="../users/registration.html" th:href="@{/users/registration}">Register</a>
+            <a class="headerItems" href="../posts/posts.html" th:href="@{/posts/posts}">Posts</a>
+            <a class="headerItems" href="create.html" >Create Post</a>
+            <a class="headerItems" href="../index.html" >Users</a>
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle headerItems" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
+                <ul class="dropdown-menu">
+
+                    <li class="dropdown-item" href="#" id="logged-in-info" style="margin:0">
+                        <p style="margin:0">Hello, <b>(user)</b></p>
+                    </li>
+                    <li class="dropdown-item" href="#">
+                        <div id="toggle">
+                            <i class="indicator"></i>
+                        </div>
+                    </li>
+                    <li class="dropdown-item" href="#">
+                        <form method="post" th:action="@{/users/logout}">
+                            <input type="submit" value="Logout"/>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+          <ul id="messages" >
+            <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"
+                th:class="${#strings.toLowerCase(msg.type)}">
+            </li>
+            <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(
+                  T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>
+          </ul>
+    </header>
+
+</body>
+</html>
