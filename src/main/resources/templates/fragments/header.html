@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <header id="header" th:fragment="header" style="z-index: 2">
@@ -35,13 +36,15 @@
             </li>
         </ul>
 
-          <ul id="messages" >
-            <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"
-                th:class="${#strings.toLowerCase(msg.type)}">
-            </li>
-            <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(
-                  T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>
-          </ul>
+<!--          <ul id="messages" >-->
+<!--            <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"-->
+<!--                th:class="${#strings.toLowerCase(msg.type)}">-->
+<!--            </li>-->
+<!--            <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(-->
+<!--                  T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>-->
+<!--          </ul>-->
+
+
     </header>
 
 </body>

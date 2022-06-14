@@ -20,7 +20,7 @@ a:hover {
 }
 
 body {
-    padding-top: 300px;
+    padding-top: 200px;
     transition: .7s;
     background: #eeeeee;
     font-family: 'IBM Plex Sans', sans-serif;
@@ -283,6 +283,7 @@ input {
         top: 50%;
         width: 260px;
         left: 0;
+        transition: all .5s ease-out;
     }
 
 .page-header--shape-right {
@@ -295,6 +296,7 @@ input {
     top: 220px;
     right: -2px;
     width: 260px;
+    transition: all .5s ease-out;
 }
 
 .thisGoesAbove{
@@ -327,4 +329,31 @@ input {
     flex-direction: column;
     align-content: space-evenly;
     padding: 20px;
+}
+
+
+
+@media screen and (max-width: 1100px) {
+    body{
+        padding-top: 450px;
+    }
+    #header{
+        position: absolute;
+        display: block;
+        float: none;
+        justify-content: center;
+    }
+    #header a:not(:first-child) {
+        display: flex;
+        padding:5px;
+    }
+    #header ul{
+        display: none;
+    }
+    .page-header--shape-right{
+        display: none;
+    }
+    .home--join-shape{
+        display: none;
+    }
 }
