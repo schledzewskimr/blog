@@ -16,35 +16,50 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 
+/**
+ * Annotate the Entity Classes: User and Post
+ * Put JPA annotations (table and column mappings + relationship mappings) to the entity classes in order to make then ready
+ * 	for persistence in the database through the JPA / Hibernate technology
+ *
+ */
 @Entity
 @Table(name="users")
 public class User {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false, length = 30, unique = true)
     @NotEmpty(message = "Please provide your User Name")
     private String userName;
+
     @Column(length = 60)
     @Length(min = 5, message = "Your password must have at least 5 characters")
     @NotEmpty(message = "Please provide your password")
-    private String passwordHash;
+    private String password;
+
     @Column(length = 100)
     @NotEmpty(message = "Please provide your full name")
     private String fullName;
+
     @OneToMany(mappedBy = "author")
     private Set<Post> posts = new HashSet<>();
-
+    /**
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
+    /**
+     * @param id the id to set
+     */
     public void setId(Long id) {
-
         this.id = id;
     }
-
+    /**
+     * @return the userName
+     */
     public String getUserName() {
         return userName;
     }
@@ -55,16 +70,16 @@ public class User {
         this.userName = userName;
     }
     /**
-     * @return the passwordHash
+     * @return the password
      */
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
     /**
-     * @param passwordHash the passwordHash to set
+     * @param password the password to set
      */
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
     /**
      * @return the fullName
@@ -110,9 +125,8 @@ public class User {
      */
     @Override
     public String toString() {
-        return "User [id=" + id + ", userName=" + userName + ", passwordHash=" + passwordHash + ", fullName=" + fullName + "]";
+        return "User [id=" + id + ", userName=" + userName + ", passwordHash=" + password + ", fullName=" + fullName + "]";
     }
-
 
 
 }

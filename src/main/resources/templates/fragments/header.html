@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <header id="header" th:fragment="header">
+    <header id="header" th:fragment="header" style="z-index: 2">
         <a href="./header.html">
             <img src="../../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
         </a>
@@ -15,20 +15,17 @@
             <a class="headerItems" href="../index.html" >Users</a>
         <ul class="nav nav-pills">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle headerItems" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Username</a>
+                <a class="nav-link dropdown-toggle headerItems" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown-item" href="#">
-                        <div id="logged-in-info">
-                            <p>Hello, <b>(user)</b></p>
-                        </div>
+
+                    <li class="dropdown-item" href="#" id="logged-in-info" style="margin:0">
+                        <p style="margin:0">Hello, <b>(user)</b></p>
                     </li>
-                    <hr>
                     <li class="dropdown-item" href="#">
                         <div id="toggle">
                             <i class="indicator"></i>
                         </div>
                     </li>
-                    <hr>
                     <li class="dropdown-item" href="#">
                         <form method="post" th:action="@{/users/logout}">
                             <input type="submit" value="Logout"/>
@@ -38,13 +35,13 @@
             </li>
         </ul>
 
-        <!--  <ul id="messages" >-->
-        <!--    <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"-->
-        <!--        th:class="${#strings.toLowerCase(msg.type)}">-->
-        <!--    </li>-->
-        <!--    <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(-->
-        <!--          T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>-->
-        <!--  </ul>-->
+          <ul id="messages" >
+            <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"
+                th:class="${#strings.toLowerCase(msg.type)}">
+            </li>
+            <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(
+                  T(blog.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>
+          </ul>
     </header>
 
 </body>
