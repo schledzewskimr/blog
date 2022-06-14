@@ -284,7 +284,7 @@ input {
         top: 50%;
         width: 260px;
         left: 0;
-        transition: all .5s ease-out;
+        transition: all 2s ease-in;
     }
 
 .page-header--shape-right {
@@ -297,7 +297,7 @@ input {
     top: 220px;
     right: -2px;
     width: 260px;
-    transition: all .5s ease-out;
+    transition: all 2s ease-in;
 }
 
 .thisGoesAbove{
@@ -361,5 +361,8 @@ input {
         display: flex;
         justify-content: center;
         position: relative;
+    }
+    .headerItems{
+        margin-left: 30px;
     }
 }

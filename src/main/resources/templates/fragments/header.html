@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,14 +13,13 @@
             <a class="headerItems" href="../users/login.html" th:href="@{/users/login}">Login</a>
             <a class="headerItems" href="../users/registration.html" th:href="@{/users/registration}">Register</a>
             <a class="headerItems" href="../posts/posts.html" th:href="@{/posts/posts}">Posts</a>
-            <a class="headerItems" href="create.html" >Create Post</a>
-            <a class="headerItems" href="../index.html" >Users</a>
+            <a class="headerItems" href="../posts/create.html" th:href="@{/posts/create}">Create Post</a>
         <ul class="nav nav-pills">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle headerItems" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
                 <ul class="dropdown-menu">
 
-                    <li class="dropdown-item" href="#" id="logged-in-info" style="margin:0">
+                    <li class="dropdown-item" sec:authorize="isAuthenticated()" href="#" id="logged-in-info" style="margin:0">
                         <p style="margin:0">Hello, <b>(user)</b></p>
                     </li>
                     <li class="dropdown-item" href="#">
@@ -28,7 +27,7 @@
                             <i class="indicator"></i>
                         </div>
                     </li>
-                    <li class="dropdown-item" href="#">
+                    <li  sec:authorize="isAuthenticated()" class="dropdown-item" href="#">
                         <form method="post" th:action="@{/users/logout}">
                             <input type="submit" value="Logout"/>
                         </form>

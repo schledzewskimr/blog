@@ -57,7 +57,7 @@ public class PostsController {
      * Display form to create a post
      * @return
      */
-    @RequestMapping("/post/create")
+    @RequestMapping("/posts/create")
     public ModelAndView create(){
         ModelAndView modelAndView = new ModelAndView();
         Post post = new Post();
