@@ -91,7 +91,7 @@ body.active {
 }
 
 #footer.active {
-    background: #222222;
+    background: rgba(0, 0, 0, 0);
     color: #CCCCCC;
     transition: 100s;
 }
@@ -227,6 +227,7 @@ input {
 }
 
 .pageHeader {
+    position: fixed;
     padding: 10px;
     padding-left: 40px;
 }
@@ -320,7 +321,7 @@ input {
     color: #3A1027;
 }
 .dropdown-menu.show{
-    max-width: 100px;
+    max-width: 150px;
     max-height: 300px;
     border: solid black 4px;
     border-radius: 2rem;
@@ -355,5 +356,10 @@ input {
     }
     .home--join-shape{
         display: none;
+    }
+    .pageHeader{
+        display: flex;
+        justify-content: center;
+        position: relative;
     }
 }
