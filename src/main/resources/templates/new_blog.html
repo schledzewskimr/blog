@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+		<h1>Add A Blog</h1>
+		<hr>
+		<h2>Blog</h2>
+		<form action="#" th:action="@{/saveBlog}" th:object="${employee}" method="POST">
+			<input type="text" th:field="*{firstName}"
+				placeholder="First Name" class="form-control mb-4 col-4">
+				
+				<input type="text" th:field="*{lastName}"
+				placeholder="Last Name" class="form-control mb-4 col-4">
+				
+				<input type="text" th:field="*{email}"
+				placeholder="Blog Post" class="form-control mb-4 col-4">
+				
+				<button type="submit" class="btn btn-info col-2"> Save Blog</button>
+		</form>
+		<hr>
+		<a th:href = "@{/}"> Back to Blog List</a>
+	</div>
+</body>
+</html>

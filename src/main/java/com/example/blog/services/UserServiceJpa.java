@@ -2,11 +2,14 @@ package com.example.blog.services;
 
 import java.util.List;
 
+import com.example.blog.dto.UserRegistrationDto;
 import com.example.blog.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -40,10 +43,12 @@ public class UserServiceJpa implements UserService {
 
     //@Override
     public Page<User> findAll(Pageable pageable) {
+
         return this.userRepository.findAll(pageable);
     }
     @Override
     public User findById(Long id) {
+
         return this.userRepository.getOne(id);
     }
     @Override
@@ -52,16 +57,31 @@ public class UserServiceJpa implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return this.userRepository.save(user);
     }
+
+    @Override
+    public User save(UserRegistrationDto registrationDto) {
+        return null;
+    }
+
     @Override
     public User edit(User user) {
+
         return this.userRepository.save(user);
     }
     @Override
     public void deleteById(Long id) {
+
         this.userRepository.deleteById(id);
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
+    }
+
     @Override
     public User findByUserName(String userName) {
+
         return this.userRepository.findByUserName(userName);
     }
 }
