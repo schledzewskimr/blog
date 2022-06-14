@@ -37,6 +37,10 @@ public class MainController {
     @Autowired
     private PostService postService;
 
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
     @GetMapping("users/login")
     public String login() {
         return "users/login";
@@ -45,12 +49,6 @@ public class MainController {
 //    public String register(){
 //        return "users/registration";
 //    }
-
-//    @GetMapping("/")
-//    public String index() {
-//        return "index";
-//    }
-
 
     @RequestMapping( value= { "/", "/index" } )
     public String index(Model model){
@@ -78,7 +76,7 @@ public class MainController {
             return "users/login";
         }
         if (!userService.authenticate(
-            userLogin.getUsername(), userLogin.getPassword())) {
+            userLogin.getUserName(), userLogin.getPassword())) {
                 notifyServ.addErrorMessage("Invalid login!");
                 return "users/login";
             }

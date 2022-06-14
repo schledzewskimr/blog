@@ -30,7 +30,6 @@ public class UserServiceJpa implements UserService {
     }
     @Override
     public List<User> findAll() {
-
         return this.userRepository.findAll();
     }
 
@@ -39,7 +38,10 @@ public class UserServiceJpa implements UserService {
         return null;
     }
 
-
+    //@Override
+    public Page<User> findAll(Pageable pageable) {
+        return this.userRepository.findAll(pageable);
+    }
     @Override
     public User findById(Long id) {
         return this.userRepository.getOne(id);
@@ -47,7 +49,7 @@ public class UserServiceJpa implements UserService {
     @Override
     public User create(User user) {
         // Encode user's password before adding it to database
-        user.setPasswordHash(bCryptPasswordEncoder.encode(user.getPasswordHash()));
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return this.userRepository.save(user);
     }
     @Override

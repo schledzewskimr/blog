@@ -16,41 +16,49 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean authenticate(String userName, String password) {
+        // Provide a sample password check: username == password
         return Objects.equals(userName, password);
     }
 
     @Override
     public List<User> findAll() {
-        return null;
-    }
-
-    @Override
-    public Page<User> findAll(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public User findByUserName(String userName) {
+        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public User findById(Long id) {
+        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public User create(User user) {
+        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public User edit(User user) {
+        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public void deleteById(Long id) {
+        // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public User findByUserName(String userName) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Page<User> findAll(Pageable pageable) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
