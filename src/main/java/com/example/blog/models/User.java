@@ -48,8 +48,6 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "author")
-    private Set<Post> posts = new HashSet<>();
     /**
      * @return the id
      */
@@ -101,20 +99,7 @@ public class User {
     /**
      * @return the posts
      */
-    public Set<Post> getPosts() {
-        return posts;
-    }
-    /**
-     * @param posts the posts to set
-     */
-    public void setPosts(Set<Post> posts) {
-        this.posts = posts;
-    }
-    /**
-     * @param id
-     * @param userName
-     * @param fullName
-     */
+    
     public User(Long id, String userName, String fullName) {
         this.id = id;
         this.userName = userName;

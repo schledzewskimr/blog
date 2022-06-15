@@ -11,6 +11,5 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-    @Query(value="SELECT p.* FROM posts p ORDER BY p.date DESC", nativeQuery = true)
-    List<Post> findLates5Posts(Pageable pageable);
+
 }

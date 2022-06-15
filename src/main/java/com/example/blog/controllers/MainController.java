@@ -49,19 +49,19 @@ public class MainController {
 //        return "users/registration";
 //    }
 
-    @RequestMapping( value= { "/", "/index" } )
-    public String index(Model model){
-        // Get last 5 post
-        List<Post> latest5Posts = this.postService.findLatest5();
-        // Send results to view model
-        model.addAttribute("latest5Posts", latest5Posts);
-        // From the 5-posts list, get another and limit it to 3
-        List<Post> latest3Posts = latest5Posts.stream().limit(3).collect(Collectors.toList());
-        // Send to view model
-        model.addAttribute("latest3Posts", latest3Posts);
-        //return "home/index"; // To have something like src/main/resources/templates/<CONTROLLER-NAME>/<Mapping-Name-index>
-        return "index"; // "Normal use"
-    }
+//    @RequestMapping( value= { "/", "/index" } )
+//    public String index(Model model){
+//        // Get last 5 post
+//        List<Post> latest5Posts = this.postService.findLatest5();
+//        // Send results to view model
+//        model.addAttribute("latest5Posts", latest5Posts);
+//        // From the 5-posts list, get another and limit it to 3
+//        List<Post> latest3Posts = latest5Posts.stream().limit(3).collect(Collectors.toList());
+//        // Send to view model
+//        model.addAttribute("latest3Posts", latest3Posts);
+//        //return "home/index"; // To have something like src/main/resources/templates/<CONTROLLER-NAME>/<Mapping-Name-index>
+//        return "index"; // "Normal use"
+//    }
 
     @GetMapping("posts/posts")
     public String view(){

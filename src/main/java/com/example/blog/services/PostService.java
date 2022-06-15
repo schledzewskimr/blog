@@ -14,11 +14,9 @@ import com.example.blog.models.Post;
  *
  */
 public interface PostService {
-    List<Post> findAll();
-    Page<Post> findAll(Pageable pageable);
-    List<Post> findLatest5();
-    Post findById(Long id);
-    Post create(Post post);
-    Post edit(Post post);
-    void deleteById(Long id);
+    List<Post> getAllPosts();
+    void savePost(Post post);
+    Post getPostById(Long id);
+    void deletePostById(Long id);
+    Page<Post> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
 }

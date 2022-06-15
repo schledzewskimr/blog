@@ -1,16 +1,10 @@
 package com.example.blog.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "posts")
@@ -19,25 +13,23 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "author_id")
     private Long id;
 
-    @Column(nullable = false, length = 300)
+    @Column(name="title", nullable = false, length = 300)
     private String title;
 
-    @Lob
-    @Column(nullable = false)
+    @Column(name ="body", columnDefinition = "text", nullable = false)
     private String body;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private User author;
-
-    @Column(nullable = false)
-    private Date date = new Date();
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="date", nullable = false, updatable = false)
+    private Date currentDate;
     /**
      * @return the id
      */
     public Long getId() {
-
         return id;
     }
     /**
@@ -71,52 +63,29 @@ public class Post {
         this.body = body;
     }
     /**
-     * @return the author
-     */
-    public User getAuthor() {
-        return author;
-    }
-    /**
-     * @param author the author to set
-     */
-    public void setAuthor(User author) {
-        this.author = author;
-    }
-    /**
      * @return the date
      */
     public Date getDate() {
-        return date;
+        return currentDate;
     }
     /**
      * @param date the date to set
      */
     public void setDate(Date date) {
-        this.date = date;
+        this.currentDate = currentDate;
     }
     /**
      *
      */
     public Post() {
     }
-    /**
-     * @param id
-     * @param title
-     * @param body
-     * @param author
-     */
-    public Post(Long id, String title, String body, User author) {
-        this.id = id;
-        this.title = title;
-        this.body = body;
-        this.author = author;
-    }
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return "Post []";
+        return "Post{" + "id=" + id + ", title='"+title+"\'"+", body='" + body + "\'" + ", creationDate=" + currentDate + "}";
     }
 
 }

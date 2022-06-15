@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html
-        xmlns:th="http://www.thymeleaf.org"
+        xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
         lang="en">
 <head>
     <title>Create Post</title>
@@ -20,12 +20,41 @@
 <!--HEADER-->
 <header th:replace="/fragments/header.html :: header" id="header"></header>
 
-<!--CONTENT-->
-<div class="container">
-    <h1 class="pageHeader">Create New Post</h1>
+<div class="page-header--shape-right"></div>
 
-    <div class="container">
-        
+<!--CONTENT-->
+
+<h1 class="pageHeader" style="position: inherit">Create New Post</h1>
+
+<div class="container">
+
+    <div class="container" style="display: flex; justify-content: center">
+        <div class = "row" id="formBox">
+                <form method="post" th:action="@{/savePost}" th:object="${post}" class="row g-3" id="createPostForm" style="margin-top:0">
+
+                    <!--POST TITLE-->
+                    <div style="display: flex; justify-content: space-between; align-items: baseline">
+                        <div class="col-md-4">
+                            <label for="postTitle" class="form-label" style="display: flex; justify-content: center; align-items: baseline"><h5>Title</h5></label>
+                        </div>
+                        <input id="postTitle" th:field ="*{title}"class="form-control" type="text" name="username"  placeholder="Enter Title of Post" autofocus="autofocus" style="margin-top: 0; max-width: 700px" required/>
+                    </div>
+
+                    <!--POST CONTENT-->
+                    <div style="display: flex; justify-content: space-between; align-items: baseline">
+                        <div class="col-md-4">
+                            <label for="postTitle" class="form-label" style="display: flex; justify-content: center; align-items: baseline"><h5>Content</h5></label>
+                        </div>
+                        <textarea id="postContent" th:field="*{body}" type="text" name="username"  placeholder="Enter Content" autofocus="autofocus" style="margin-top: 0; width: 650px; height: 175px; border: solid 4px black; border-radius: 12px" required>
+                        </textarea>
+                    </div>
+
+                    <!--SUBMIT BUTTON-->
+                    <div style="display: flex; justify-content: center">
+                    <button type="submit" class="btn btn-info col-2" style="color: white">Save Post</button>
+                    </div>
+                </form>
+        </div>
     </div>
 <!--    <form action="#" th:action="@{/saveBlog}" th:object="${post}" method="POST">-->
 <!--        <input type="text" th:field="*{title}"-->
@@ -38,8 +67,8 @@
 <!--            <button type="submit" class="btn btn-info col-2"> Save Blog</button>-->
 <!--        </div>-->
 <!--    </form>-->
-    <hr>
-    <a th:href = "@{/}"> Back to Blog List</a>
+    <br>
+    <a th:href = "@{/posts/posts}"> Back to Blog List</a>
 </div>
 
 
