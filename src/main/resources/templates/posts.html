@@ -21,22 +21,23 @@
 
 <div class = "container my-2">
 
-    <table class = "table table-striped table-responsive-md">
-        <thead>
-        <tr>
-            <th>Post Id</th>
-            <th>Post Title</th>
-            <th>Post Content</th>
-            <th>Action</th>
-        </tr>
+    <table class = "table table-responsive-md" style="border: none; display: flex; justify-content: center ">
+        <thead style="border: none">
+            <tr style="display: none">
+                <th>Post Id</th>
+                <th>Post Title</th>
+                <th>Post Content</th>
+                <th>Action</th>
+            </tr>
         </thead>
-        <tbody>
+        <tbody style="border: none">
         <tr th:each="post : ${posts}">
-            <td th:text="${post.id}"></td>
-            <td th:text="${post.title}"></td>
-            <td th:text="${post.body}"></td>
-            <td> <a th:href="@{/updatePost/{id}(id=${post.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/deletePost/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
+            <td th:text="${post.id}" ></td>
+            <td th:text="${post.title}" style=" display:inline-block; justify-content: end; font-weight: bold; font-size: large" ></td>
+            <td th:text="${post.body}" style="display: flex; overflow: auto"></td>
+            <td style="display: flex; justify-content:space-between" id="tableActions">
+                <a th:href="@{/updatePost/{id}(id=${post.id})}" class="btn actionButton btn-primary">✏️</a>
+                <a th:href="@{/deletePost/{id}(id=${post.id})}" class="btn actionButton btn-danger">❌</a>
             </td>
         </tr>
         </tbody>
