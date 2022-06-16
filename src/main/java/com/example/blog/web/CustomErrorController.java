@@ -1,4 +1,4 @@
-package com.example.blog.controllers;
+package com.example.blog.web;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;

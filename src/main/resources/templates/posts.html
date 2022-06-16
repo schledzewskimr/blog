@@ -17,7 +17,7 @@
 
 <div class="home--follow-background wow fadeIn" style="visibility: visible; animation-name: fadeIn;"></div>
 
-<h1 class="pageHeader" style="position: relative">Blog Posts</h1>
+<h1 class="pageHeader">Blog Posts</h1>
 
 <div class = "container my-2">
 
@@ -32,8 +32,8 @@
         </thead>
         <tbody style="border: none">
         <tr th:each="post : ${posts}">
-            <td th:text="${post.id}" ></td>
-            <td th:text="${post.title}" style=" display:inline-block; justify-content: end; font-weight: bold; font-size: large" ></td>
+            <td th:text="${post.id}" style="display: none"></td>
+            <td th:text="${post.title}" style=" display:inline-block; justify-content: end; font-weight: bold; font-size: x-large" ></td>
             <td th:text="${post.body}" style="display: flex; overflow: auto"></td>
             <td style="display: flex; justify-content:space-between" id="tableActions">
                 <a th:href="@{/updatePost/{id}(id=${post.id})}" class="btn actionButton btn-primary">✏️</a>

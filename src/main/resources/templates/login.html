@@ -25,13 +25,13 @@
     <div class = "col-md-6 col-md-offset-3">
 
       <form method="post" class="row g-3" id="loginForm">
-        <!--username-->
+        <!--email-->
         <div style="display: flex; justify-content: space-between; align-items: baseline">
           <div class="col-md-4">
-            <label for="username" class="form-label" style="display: flex; justify-content: center; align-items: baseline"><h5>Username</h5></label>
+            <label for="email" class="form-label" style="display: flex; justify-content: center; align-items: baseline"><h5>Email</h5></label>
           </div>
 
-          <input id="username"  class="form-control" type="text" name="username"  placeholder="Enter Username" autofocus="autofocus" style="margin-top: 0; max-width: 700px" required/>
+          <input id="email"  class="form-control" type="text" name="email"  placeholder="Enter Email" autofocus="autofocus" style="margin-top: 0; max-width: 700px" required/>
         </div>
 
 
@@ -42,8 +42,10 @@
             <label for="password" class="form-label" style="display: flex; justify-content: center; align-items: baseline"><h5>Password</h5></label>
           </div>
 
-          <input class = "form-control" id="password"  type="password" name="password"  placeholder="Enter password" style="margin-top: 0; max-width: 700px" required/>
+          <input class = "form-control" id="password"  type="password" name="password"  placeholder="Enter Password" style="margin-top: 0; max-width: 700px" required/>
         </div>
+
+        <br>
 
         <!--submit button-->
         <div class="form-group">
@@ -54,6 +56,9 @@
           </div>
         </div>
       </form>
+
+      <br>
+
       <!--register link-->
       <div class="form-group">
         <span><h5>New user? <a href="registration.html" th:href="@{/registration}">Register here</a></h5></span>

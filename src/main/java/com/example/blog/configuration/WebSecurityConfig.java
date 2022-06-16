@@ -48,7 +48,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
 
         http.authorizeRequests()
-                .antMatchers("/", "/index","/home", "/error/**", "/posts","/create","/updatePost/**","/deletePost/**", "/posts/**", "/users/logout", "/registration", "/login", "/savePost").permitAll()
+                .antMatchers("/",
+                        "/index",
+                        "/home",
+                        "/error/**",
+                        "/posts",
+                        "/create",
+                        "/updatePost/**",
+                        "/deletePost/**",
+                        "/posts/**",
+                        "/users/logout",
+                        "/registration",
+                        "/login",
+                        "/savePost")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -60,7 +73,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
-                .permitAll();
+                .permitAll()
+                .and()
+                .csrf().disable();
 
     }
     /**
