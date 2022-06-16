@@ -45,13 +45,6 @@ public class PostsController {
             return "404";
         }
     }
-//    @GetMapping("/showNewPost")
-//    public String showNewUserForm(Model model) {
-//        // create model attribute to bind form data
-//        Post user = new Post();
-//        model.addAttribute("user", user);
-//        return "new_post";
-//    }
 
     @GetMapping("/create")
     public String showNewPostForm(Model model){
