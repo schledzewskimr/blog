@@ -10,10 +10,10 @@
             <img src="../../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
         </a>
             <a class="headerItems" href="../index.html" th:href="@{/}">Home</a>
-            <a class="headerItems" href="../users/login.html" th:href="@{/users/login}">Login</a>
-            <a class="headerItems" href="../users/registration.html" th:href="@{/users/registration}">Register</a>
-            <a class="headerItems" href="../posts/posts.html" th:href="@{/posts/posts}">Posts</a>
-            <a class="headerItems" href="../posts/create.html" th:href="@{/showNewPostForm}">Create Post</a>
+            <a class="headerItems" href="../login.html" th:href="@{/login}">Login</a>
+            <a class="headerItems" href="../registration.html" th:href="@{/registration}">Register</a>
+            <a class="headerItems" href="../posts.html" th:href="@{/posts}">Posts</a>
+            <a class="headerItems" href="../create.html" th:href="@{/create}">Create Post</a>
         <ul class="nav nav-pills">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle headerItems" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
@@ -28,7 +28,7 @@
                         </div>
                     </li>
                     <li  sec:authorize="isAuthenticated()" class="dropdown-item" href="#">
-                        <form method="post" th:action="@{/users/logout}">
+                        <form method="post" th:action="@{/logout}">
                             <input type="submit" value="Logout"/>
                         </form>
                     </li>

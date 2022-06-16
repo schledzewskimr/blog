@@ -17,34 +17,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    /**
-     * Needed to read credentials parse password
-     * TODO https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
-     */
-   // @Autowired
-   // private DataSource dataSource;
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    /**
-     * Read query statement from application.properties file
-     */
-    @Value("${spring.queries.users-query}")
-    private String usersQuery;
-
-    @Value("${spring.queries.roles-query}")
-    private String rolesQuery;
     @Autowired
     private UserService userService;
-
-    /**
-     * Perform a query against the database with username and password fields
-     */
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -58,15 +36,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
-    //@Override
 
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-//        auth.jdbcAuthentication()
-//                .usersByUsernameQuery(usersQuery)
-//                .authoritiesByUsernameQuery(rolesQuery)
-//                .dataSource(dataSource)
-//                .passwordEncoder(bCryptPasswordEncoder);
-//    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
     /**
      * Configure HTTP permissions
      */
@@ -74,19 +48,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
 
         http.authorizeRequests()
-                .antMatchers("/", "/index","/home", "/error/**", "/posts","/showNewPostForm","/showPostForUpdate/**","/deletePost/**", "/posts/**", "/users/logout", "/users/registration", "/users/login", "/savePost").permitAll()
+                .antMatchers("/", "/index","/home", "/error/**", "/posts","/create","/showPostForUpdate/**","/deletePost/**", "/posts/**", "/users/logout", "/registration", "/login", "/savePost").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/users/login").failureUrl("/users/login?error=true").defaultSuccessUrl("/")
-                .usernameParameter("userName").passwordParameter("password")
+                .loginPage("/login").failureUrl("/login?error=true").defaultSuccessUrl("/")
+                .usernameParameter("email").passwordParameter("password")
                 .and()
                 .logout()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/users/logout"))
-                .logoutSuccessUrl("/").and().exceptionHandling()
-                .accessDeniedPage("/error/403");
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .permitAll();
+
     }
     /**
      * Configure Web permissions (images, css, js, etc.)

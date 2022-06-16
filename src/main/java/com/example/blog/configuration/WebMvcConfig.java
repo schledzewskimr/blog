@@ -17,10 +17,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry){
         registry.addViewController("/home").setViewName("index");
         registry.addViewController("/").setViewName("index");
-        registry.addViewController("users/login").setViewName("users/login");
-        registry.addViewController("/registration").setViewName("users/registration");
-        registry.addViewController("/posts").setViewName("posts/posts");
-        registry.addViewController("/showNewPostForm").setViewName("posts/create");
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/registration").setViewName("registration");
+        registry.addViewController("/posts").setViewName("posts");
+        registry.addViewController("/create").setViewName("create");
     }
 
 //    @Bean

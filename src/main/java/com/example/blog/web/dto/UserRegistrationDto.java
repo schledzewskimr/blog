@@ -1,23 +1,20 @@
-package com.example.blog.dto;
+package com.example.blog.web.dto;
 
 public class UserRegistrationDto {
     private String firstName;
     private String lastName;
     private String email;
-
-    private String userName;
     private String password;
 
     public UserRegistrationDto(){
 
     }
 
-    public UserRegistrationDto(String firstName, String lastName, String email, String userName, String password) {
+    public UserRegistrationDto(String firstName, String lastName, String email, String password) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.userName =userName;
         this.password = password;
     }
 
@@ -38,14 +35,6 @@ public class UserRegistrationDto {
     }
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername(String username){
-        return username;
-    }
-
-    public void setUsername(){
-        this.userName =userName;
     }
     public String getPassword() {
         return password;
