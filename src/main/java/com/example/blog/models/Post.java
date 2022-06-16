@@ -24,7 +24,7 @@ public class Post {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="date", nullable = false, updatable = false)
-    private Date currentDate;
+    private Date date;
 
     public long getId() {
         return id;
@@ -50,11 +50,11 @@ public class Post {
         this.body = body;
     }
     public Date getDate() {
-        return currentDate;
+        return date;
     }
 
     public void setDate(Date date) {
-        this.currentDate = currentDate;
+        this.date = date;
     }
 
     public Post(String title, String body) {

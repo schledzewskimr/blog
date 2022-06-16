@@ -10,10 +10,11 @@
             <img src="../../static/img/lightLogo.png" th:src="@{/img/lightLogo.png}" id = "siteLogo" />
         </a>
             <a class="headerItems" href="../index.html" th:href="@{/}">Home</a>
-            <a class="headerItems" href="../login.html" th:href="@{/login}">Login</a>
-            <a class="headerItems" href="../registration.html" th:href="@{/registration}">Register</a>
+            <a class="headerItems" sec:authorize="isAnonymous()" href="../login.html" th:href="@{/login}">Login</a>
+            <a class="headerItems" sec:authorize="isAuthenticated()" href="../logout.html" th:href="@{/logout}">Logout</a>
+            <a class="headerItems" sec:authorize="isAnonymous()" href="../registration.html" th:href="@{/registration}">Register</a>
             <a class="headerItems" href="../posts.html" th:href="@{/posts}">Posts</a>
-            <a class="headerItems" href="../create.html" th:href="@{/create}">Create Post</a>
+            <a class="headerItems" sec:authorize="isAuthenticated()" href="../create.html" th:href="@{/create}">Create Post</a>
         <ul class="nav nav-pills">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle headerItems" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>

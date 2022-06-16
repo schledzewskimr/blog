@@ -35,6 +35,7 @@
             <td th:text="${post.id}" style="display: none"></td>
             <td th:text="${post.title}" style=" display:inline-block; justify-content: end; font-weight: bold; font-size: x-large" ></td>
             <td th:text="${post.body}" style="display: flex; overflow: auto"></td>
+            <td th:text="${#dates.format(post.date, 'MM-dd-yyyy HH:mm')}" style="display: flex; justify-content: flex-end"></td>
             <td style="display: flex; justify-content:space-between" id="tableActions">
                 <a th:href="@{/updatePost/{id}(id=${post.id})}" class="btn actionButton btn-primary">✏️</a>
                 <a th:href="@{/deletePost/{id}(id=${post.id})}" class="btn actionButton btn-danger">❌</a>
