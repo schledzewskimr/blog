@@ -12,6 +12,7 @@ import com.example.blog.services.PostService;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -27,6 +28,10 @@ public class PostsController {
         this.postService=postService;
     }
 
+    @GetMapping("/")
+    public String viewHomePage(Model model) {
+        return findPaginated(1, model);
+    }
     @GetMapping("/posts")
     public String displayAllPosts(Model model){
         Collection<Post> posts = this.postService.getAllPosts();
@@ -72,26 +77,46 @@ public class PostsController {
         return "redirect:/posts";
     }
 
-    @GetMapping("/page/{pageNo}")
-    public String findPaginated(@PathVariable (value = "pageNo") int pageNo,
-                                @RequestParam("sortField") String sortField,
-                                @RequestParam("sortDir") String sortDir,
-                                Model model) {
-        //set amount of post on page
-        int pageSize = 10;
+//    @GetMapping("/page/{pageNo}")
+//    public String findPaginated(@PathVariable (value = "pageNo") int pageNo,
+//                                @RequestParam("sortField") String sortField,
+//                                @RequestParam("sortDir") String sortDir,
+//                                Model model) {
+//        //set amount of post on page
+//        int pageSize = 10;
+//
+//        Page<Post> page = postService.findPaginated(pageNo, pageSize, sortField, sortDir);
+//        List<Post> listUsers = page.getContent();
+//
+//        model.addAttribute("currentPage", pageNo);
+//        model.addAttribute("totalPages", page.getTotalPages());
+//        model.addAttribute("totalItems", page.getTotalElements());
+//
+//        model.addAttribute("sortField", sortField);
+//        model.addAttribute("sortDir", sortDir);
+//        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+//
+//        model.addAttribute("listUsers", listUsers);
+//        return "index";
+//    }
 
-        Page<Post> page = postService.findPaginated(pageNo, pageSize, sortField, sortDir);
-        List<Post> listUsers = page.getContent();
+    @GetMapping("/page/{pageNo}")
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
+                                Model model) {
+        int pageSize = 5;
+        Page<Post> page = postService.findPaginated(pageNo, pageSize);
+        List<Post> listPosts = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
 
-        model.addAttribute("sortField", sortField);
-        model.addAttribute("sortDir", sortDir);
-        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-
-        model.addAttribute("listUsers", listUsers);
+        model.addAttribute("listPosts", listPosts);
+// Get last 5 post
+        List<Post> latest5Posts = this.postService.findLatest5();
+        model.addAttribute("latest5Posts", latest5Posts);
+        List<Post> latest3Posts = latest5Posts.stream().limit(3).collect(Collectors.toList());
+        model.addAttribute("latest3Posts", latest3Posts);
         return "index";
     }
 

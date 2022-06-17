@@ -60,4 +60,20 @@ public class PostServiceImpl  implements PostService {
         Pageable pageable = PageRequest.of(pageNo -1, pageSize, sort);
         return this.postRepository.findAll(pageable);
     }
+
+    @Override
+    public List<Post> findLatest5() {
+        return this.postRepository
+                .findAll( PageRequest.of(0, 5,Sort.Direction.DESC,"id") ).stream()
+                .sorted( (a,b) -> b.getDate().compareTo(a.getDate()) )
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<Post> findPaginated(int pageNum, int pageSize) {
+        Sort sort = Sort.by("id").descending();
+
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize).withSort(sort);
+        return this.postRepository.findAll(pageable);
+    }
 }

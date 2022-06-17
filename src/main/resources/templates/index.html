@@ -11,11 +11,39 @@
   <script src="../../static/js/jquery-3.6.0.js" th:src="@{/js/jquery-3.6.0.js}"></script>
   <script src="../../static/js/blog-scripts.js" th:src="@{/js/blog-scripts.js}"></script>
 </head>
-
 <body>
 
 <header th:replace="fragments/header :: header"></header>
 
+<div id="container1">
+  <h3 style="text-align: center" text>Welcome to the Carolina Fintech Hub Blog.</h3>
+</div>
+<div th:if="${param.success}" class="alert alert-info" id="messages">You have successfully logged in.</div>
+<div th:if="${param.logout}" class="alert alert-info" id="messages">You have successfully logged out.</div>
+<div class="alert delete-alert" th:if="${param.deleted}">Post has been successfully deleted</div>
+<div class="container my-2 post-container">
+  <a sec:authorize="isAuthenticated()" th:href="@{/post/create}" class="btn btn-primary btn-sm mb-3"
+     id="addpostbutton"> Add Post </a>
+  <div th:each="post : ${listPosts}">
+    <div class="card">
+      <div class="face face1">
+        <div class="content">
+          <a id="postname" th:text="${post.title}"
+             th:href="@{/post/view/{id}(id=${post.id})}"></a>
+          <h5>Created on: <br /> <span th:text="${post.date}"></span></h5>
+        </div>
+      </div>
+      <div class="face face2">
+        <div class="content">
+          <p class="card-text" th:text="${post.body}"></p>
+          <a th:href="@{/updatePost/{id}(id=${post.id})}" class="btn actionButton btn-primary">✏️</a>
+          <a th:href="@{/deletePost/{id}(id=${post.id})}" class="btn actionButton btn-danger">❌</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <!--FOOTER-->
 <ul class="footer footer--links-social wow" id="footer" style="visibility: visible; animation-name: fadeIn;" th:fragment="site-footer">

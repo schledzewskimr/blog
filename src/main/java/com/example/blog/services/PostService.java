@@ -19,4 +19,7 @@ public interface PostService {
     Post getPostById(Long id);
     void deletePostById(Long id);
     Page<Post> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
+
+    List<Post> findLatest5();
+    Page<Post> findPaginated(int pageNum, int pageSize);
 }

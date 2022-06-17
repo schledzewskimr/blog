@@ -21,6 +21,7 @@
 
 <div class = "container my-2">
 
+
     <table class = "table table-responsive-md" style="border: none; display: flex; justify-content: center ">
         <thead style="border: none">
             <tr style="display: none">
@@ -31,6 +32,7 @@
             </tr>
         </thead>
         <tbody style="border: none">
+        <tr sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></tr>
         <tr th:each="post : ${posts}">
             <td th:text="${post.id}" style="display: none"></td>
             <td th:text="${post.title}" style=" display:inline-block; justify-content: end; font-weight: bold; font-size: x-large" ></td>
@@ -46,7 +48,10 @@
 </div>
 
 <div style="display: flex; justify-content: center">
-    <a th:href="@{/create}" class="btn btn-primary btn-sm mb-3"> New Post </a>
+
+    <a th:href = "@{/login}" sec:authorize="!isAuthenticated()" class="btn btn-primary btn-sm mb-3"> Login </a>
+    <a sec:authorize="isAuthenticated()" th:href="@{create}" class="btn btn-primary btn-sm mb-3"> New Post </a>
+
 </div>
 
 
