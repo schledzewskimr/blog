@@ -22,7 +22,7 @@
 <div th:if="${param.logout}" class="alert alert-info" id="messages">You have successfully logged out.</div>
 <div class="alert delete-alert" th:if="${param.deleted}">Post has been successfully deleted</div>
 <div class="container my-2 post-container">
-  <a sec:authorize="isAuthenticated()" th:href="@{/post/create}" class="btn btn-primary btn-sm mb-3"
+  <a sec:authorize="isAuthenticated()" th:href="@{create}" class="btn btn-primary btn-sm mb-3"
      id="addpostbutton"> Add Post </a>
   <div th:each="post : ${listPosts}">
     <div class="card">
